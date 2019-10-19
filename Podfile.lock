@@ -1,0 +1,30 @@
+PODS:
+  - Alamofire (4.9.0)
+  - FittedSheets (1.4.5)
+  - Kingfisher (5.8.2):
+    - Kingfisher/Core (= 5.8.2)
+  - Kingfisher/Core (5.8.2)
+  - SwiftyJSON (5.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - FittedSheets
+  - Kingfisher
+  - SwiftyJSON
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - FittedSheets
+    - Kingfisher
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  FittedSheets: 7f754c9f6fb4ea330cbc57c652b594255f2a6819
+  Kingfisher: 3adc15096595f5aed800bb0d5cb757fc58b2d2dd
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+
+PODFILE CHECKSUM: b4c819a0451ff7114a1f9f2de258bae4f78dc8d4
+
+COCOAPODS: 1.8.1
