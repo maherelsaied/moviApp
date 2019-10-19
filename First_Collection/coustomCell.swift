@@ -7,13 +7,14 @@
 //
 
 import UIKit
-
+import Kingfisher
+import FittedSheets
 class catogeryCell : UICollectionViewCell {
-    
-    
+     var photoArr = [photos]()
+     var ids = [Int]()
     
     let AppcellID = "AppCellId"
-    fileprivate let AppCollectionView:UICollectionView = {
+     let AppCollectionView:UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -30,7 +31,7 @@ class catogeryCell : UICollectionViewCell {
     }()
     let namelabel : UILabel = {
         let Nlabel = UILabel()
-        Nlabel.text = "Best New App"
+        //Nlabel.text = "Best New App"
         Nlabel.translatesAutoresizingMaskIntoConstraints = false
         Nlabel.font = UIFont.systemFont(ofSize: 20)
         return Nlabel
@@ -62,9 +63,10 @@ class catogeryCell : UICollectionViewCell {
         addSubview(deviderline)
         addSubview(namelabel)
         addSubview(showlabel)
-       
-        AppCollectionView.register(appcollectionCell.self, forCellWithReuseIdentifier: AppcellID)
         
+        AppCollectionView.register(appcollectionCell.self, forCellWithReuseIdentifier: AppcellID)
+        //uploadtasks(index: 1)
+    
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-250-[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":showlabel]))
         
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0":namelabel]))
@@ -77,21 +79,33 @@ class catogeryCell : UICollectionViewCell {
 
     }
     
-}
+     func uploadtasks(index : Int){
+        photoApi.getPhotos(index: index) { (Error:Error?, photo:[photos]?, last_page : Int) in
+            if let ph = photo {
+              self.photoArr = ph
+              self.AppCollectionView.reloadData()
+        }
+        }
+    }
+   
 
-
-extension catogeryCell : UICollectionViewDelegateFlowLayout , UICollectionViewDelegate,UICollectionViewDataSource  {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    }
+extension catogeryCell :  UICollectionViewDelegateFlowLayout , UICollectionViewDelegate,UICollectionViewDataSource  {
+    
+     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 130, height: frame.height-40 )
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return photoArr.count
     }
     
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = AppCollectionView.dequeueReusableCell(withReuseIdentifier: AppcellID , for: indexPath) as! appcollectionCell
+       // uploadtasks(index: indexPath.row)
+        cell.photo = photoArr[indexPath.row]
+        self.ids.append(cell.id!)
         return cell
     }
     
@@ -103,25 +117,49 @@ extension catogeryCell : UICollectionViewDelegateFlowLayout , UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath.row)
-    
+        
+      //  guard let window = UIApplication.shared.keyWindow else{return}
+        let sb = UIStoryboard.init(name: "Main", bundle: nil)
+       
+         let vc = sb.instantiateViewController(withIdentifier: "thierd") as! moviDetails
+         vc.translatedID = self.ids[indexPath.row]
+         print(self.ids[indexPath.row])
+         let sheetController = SheetViewController(controller: vc)
+        self.window?.rootViewController?.present(sheetController , animated:false , completion: nil)
+        
+        
+        
+        
+  
         
     }
   
 }
-
-
+//////////////////////
 
 class appcollectionCell : UICollectionViewCell {
     let imageview : UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "image4")
         image.layer.cornerRadius = 12
         image.layer.masksToBounds = true
         image.clipsToBounds = true
         return image
         
     }()
- 
+    var id :Int?
+    var photo : photos?{
+        didSet{
+            guard let photo = photo else{return}
+            //////////////KIngfisher/////////////
+            self.id = photo.id
+            // import kingfisher to install images
+            self.imageview.kf.indicatorType = .activity
+            if let url = URL(string: photo.url) {
+                self.imageview.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.flipFromTop(0.5))])
+            }
+            
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -135,8 +173,6 @@ class appcollectionCell : UICollectionViewCell {
     func setupViews(){
         backgroundColor = .white
         addSubview(imageview)
-        
-       
         imageview.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.width+50)
         
     }

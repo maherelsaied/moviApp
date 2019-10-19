@@ -30,8 +30,38 @@ extension JSON {
         return 0
     }
     
+//    var toString : String? {
+//        if let string = self.string {return string}
+//        if let double = self.double , let string = String?(double){
+//            return string
+//        }
+//        return "h"
+//    }
+    
+    
+    
+    var toDouble : Double? {
+        if let double = self.double {return double}
+        if let string = self.string , let double = Double(string){
+            return double
+        }
+        return 0.0
+    }
+    
     var PathString : String? {
         guard let string = self.string , !string.isEmpty else{return nil}
         return "http://image.tmdb.org/t/p/w185/" + string
+    }
+ 
+}
+extension UIImage {
+    func imageWithColor(_ color: UIColor) -> UIImage? {
+        var image = withRenderingMode(.alwaysTemplate)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        color.set()
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
     }
 }

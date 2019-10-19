@@ -9,55 +9,114 @@
 import UIKit
 
 
-class moviCollection: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate {
 
-
+class moviCollection: UIViewController  {
+    
+    var numberOfRow : Int?
+    var id = [Int]()
+    var selfid : Int!
+    
     @IBOutlet weak var collectionview: UICollectionView!
 
-    var imageArr:[UIImage] = [
-        UIImage(named: "image1")! ,
-        UIImage(named: "image2")! ,
-        UIImage(named: "image3")! ,
-        UIImage(named: "image4")! ,
-        UIImage(named: "image4")! ,
-    ]
+    var isloading : Bool = false
+    var last_page = 1
+    var current_page = 1
+   
+    lazy var refresher : UIRefreshControl = {
+        let refresher = UIRefreshControl()
+        refresher.addTarget(self, action: #selector(uploadtasks), for: .valueChanged)
+        return refresher
+    }()
 
+    var photoArr = [photos]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionview.dataSource = self
         collectionview.delegate = self
-
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: nil, action: nil)
         let layout = self.collectionview.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         layout.minimumInteritemSpacing = 5
         layout.itemSize = CGSize(width: (self.collectionview.frame.size.width - 30 )/2, height: self.collectionview.frame.size.height/3)
+        
+        
+        view.backgroundColor = .white
+        collectionview.backgroundColor = .clear
+        collectionview.alwaysBounceVertical = true
+       // collectionview.register(UINib.init(nibName: cellident, bundle: nil), forCellWithReuseIdentifier: cellident)
+        collectionview.addSubview(refresher)
+        print(numberOfRow!)
+        uploadtasks(index: numberOfRow!)
 
     }
+    
+    @objc private func uploadtasks( index : Int){
+        self.refresher.endRefreshing()
+        //  guard !isloading else{return}
+        // self.isloading = true
+        
+        photoApi.getPhotos(index: index) { (Error:Error?, photo:[photos]?, last_page: Int) in
+            if let ph = photo {
+                self.photoArr = ph
+                self.collectionview.reloadData()
+                self.current_page = 1
+                self.last_page = last_page
+            }
+          }
+        }
+    
+        
+
+    
+    fileprivate func loadMore(index : Int){
+        photoApi.getPhotos (index : index , page : current_page+1) { (Error:Error?, photo:[photos]?,last_page:Int) in
+         
+            if let ph = photo {
+                self.photoArr.append(contentsOf: ph)
+                self.collectionview.reloadData()
+                self.current_page += 1
+                self.last_page = last_page
+            }
+        }
+    }
+}
+
+
+    extension moviCollection : UICollectionViewDataSource , UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return imageArr.count
+        return photoArr.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! moviCollectionCell
-        
-        cell.imageposter.image = imageArr[indexPath.row]
-        cell.layer.borderColor = UIColor.lightGray.cgColor
+      
+        cell.photo = photoArr[indexPath.item]
+        self.id.append(cell.id!)
         cell.layer.cornerRadius = 20
-        cell.layer.borderWidth = 2
+        
         return cell
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath)
-//        cell?.layer.cornerRadius = 20
-//        cell?.layer.borderColor = UIColor.darkGray.cgColor
-//        cell?.layer.borderWidth = 5
-//    }
-
-//    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-//        let cell = collectionView.cellForItem(at: indexPath)
-//        cell?.layer.cornerRadius = 20
-//        cell?.layer.borderColor = UIColor.lightGray.cgColor
-//        cell?.layer.borderWidth = 2
-//    }
-
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let count = self.photoArr.count
+        if indexPath.row == count-1 {
+            loadMore(index: numberOfRow!)
+            
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       // let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! moviCollectionCell
+       
+        self.selfid = self.id[indexPath.row]
+        performSegue(withIdentifier: "next", sender: self)
+    
+    }
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if (segue.identifier == "next"){
+                let nextVc = segue.destination as! moviDetails
+                nextVc.translatedID = self.selfid
+            }
+        }
 }

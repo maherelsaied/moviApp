@@ -3,18 +3,35 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		030753A22355232400C0A30E /* JsonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030753A12355232400C0A30E /* JsonExtention.swift */; };
+		030753A42355237E00C0A30E /* photos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030753A32355237E00C0A30E /* photos.swift */; };
+		030753A7235523D200C0A30E /* photoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030753A6235523D200C0A30E /* photoApi.swift */; };
+		030BC68F2355E1B600C85B5A /* moviDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BC68E2355E1B600C85B5A /* moviDetails.swift */; };
+		030BC6942355EBA900C85B5A /* moviDet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BC6932355EBA900C85B5A /* moviDet.swift */; };
+		030BC69623570A0600C85B5A /* DetaielsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030BC69523570A0600C85B5A /* DetaielsApi.swift */; };
 		0392A0E2235423FC00DC5FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A0E1235423FC00DC5FEB /* AppDelegate.swift */; };
 		0392A0E4235423FC00DC5FEB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A0E3235423FC00DC5FEB /* ViewController.swift */; };
 		0392A0E7235423FC00DC5FEB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0392A0E5235423FC00DC5FEB /* Main.storyboard */; };
 		0392A0E9235423FD00DC5FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0392A0E8235423FD00DC5FEB /* Assets.xcassets */; };
 		0392A0EC235423FD00DC5FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0392A0EA235423FD00DC5FEB /* LaunchScreen.storyboard */; };
+		0392A0F423542B3900DC5FEB /* coustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A0F323542B3900DC5FEB /* coustomCell.swift */; };
+		0392A0F623542C0A00DC5FEB /* moviCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A0F523542C0A00DC5FEB /* moviCollection.swift */; };
+		0392A0F823542D1100DC5FEB /* moviCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0392A0F723542D1100DC5FEB /* moviCollectionCell.swift */; };
+		03D2CEF723581CB7004224B5 /* recommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D2CEF623581CB7004224B5 /* recommendCell.swift */; };
+		A0CE779F0A1E9AE3CFECF514 /* Pods_MoviApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 851B7582F629D509081F194E /* Pods_MoviApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		030753A12355232400C0A30E /* JsonExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonExtention.swift; sourceTree = "<group>"; };
+		030753A32355237E00C0A30E /* photos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = photos.swift; sourceTree = "<group>"; };
+		030753A6235523D200C0A30E /* photoApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = photoApi.swift; sourceTree = "<group>"; };
+		030BC68E2355E1B600C85B5A /* moviDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moviDetails.swift; sourceTree = "<group>"; };
+		030BC6932355EBA900C85B5A /* moviDet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moviDet.swift; sourceTree = "<group>"; };
+		030BC69523570A0600C85B5A /* DetaielsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetaielsApi.swift; sourceTree = "<group>"; };
 		0392A0DE235423FC00DC5FEB /* MoviApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0392A0E1235423FC00DC5FEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0392A0E3235423FC00DC5FEB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +39,13 @@
 		0392A0E8235423FD00DC5FEB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0392A0EB235423FD00DC5FEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0392A0ED235423FD00DC5FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0392A0F323542B3900DC5FEB /* coustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = coustomCell.swift; sourceTree = "<group>"; };
+		0392A0F523542C0A00DC5FEB /* moviCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = moviCollection.swift; sourceTree = "<group>"; };
+		0392A0F723542D1100DC5FEB /* moviCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moviCollectionCell.swift; sourceTree = "<group>"; };
+		03D2CEF623581CB7004224B5 /* recommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recommendCell.swift; sourceTree = "<group>"; };
+		60B79982D1D3D5878B1BCD33 /* Pods-MoviApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviApp.debug.xcconfig"; path = "Target Support Files/Pods-MoviApp/Pods-MoviApp.debug.xcconfig"; sourceTree = "<group>"; };
+		851B7582F629D509081F194E /* Pods_MoviApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC90E12627A6AD2F461C49E3 /* Pods-MoviApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviApp.release.xcconfig"; path = "Target Support Files/Pods-MoviApp/Pods-MoviApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +53,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0CE779F0A1E9AE3CFECF514 /* Pods_MoviApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		030753A5235523B500C0A30E /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				030753A6235523D200C0A30E /* photoApi.swift */,
+				030BC69523570A0600C85B5A /* DetaielsApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		030BC68D2355E18D00C85B5A /* MoviDetaiels */ = {
+			isa = PBXGroup;
+			children = (
+				030BC68E2355E1B600C85B5A /* moviDetails.swift */,
+				03D2CEF623581CB7004224B5 /* recommendCell.swift */,
+			);
+			path = MoviDetaiels;
+			sourceTree = "<group>";
+		};
+		030BC6922355EB5800C85B5A /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				030753A32355237E00C0A30E /* photos.swift */,
+				030753A12355232400C0A30E /* JsonExtention.swift */,
+				030BC6932355EBA900C85B5A /* moviDet.swift */,
+			);
+			name = Helper;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		0392A0D5235423FC00DC5FEB = {
 			isa = PBXGroup;
 			children = (
+				030BC6922355EB5800C85B5A /* Helper */,
+				030BC68D2355E18D00C85B5A /* MoviDetaiels */,
+				030753A5235523B500C0A30E /* Api */,
+				0392A0FA23542DF800DC5FEB /* First_Collection */,
+				0392A0F923542DE100DC5FEB /* Seconed_C ollection */,
 				0392A0E0235423FC00DC5FEB /* MoviApp */,
 				0392A0DF235423FC00DC5FEB /* Products */,
+				F3818E059F3E22E7B7E5D35E /* Pods */,
+				E8B0A1844676A15C5F34BAA7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +116,47 @@
 			isa = PBXGroup;
 			children = (
 				0392A0E1235423FC00DC5FEB /* AppDelegate.swift */,
-				0392A0E3235423FC00DC5FEB /* ViewController.swift */,
 				0392A0E5235423FC00DC5FEB /* Main.storyboard */,
 				0392A0E8235423FD00DC5FEB /* Assets.xcassets */,
 				0392A0EA235423FD00DC5FEB /* LaunchScreen.storyboard */,
 				0392A0ED235423FD00DC5FEB /* Info.plist */,
 			);
 			path = MoviApp;
+			sourceTree = "<group>";
+		};
+		0392A0F923542DE100DC5FEB /* Seconed_C ollection */ = {
+			isa = PBXGroup;
+			children = (
+				0392A0F523542C0A00DC5FEB /* moviCollection.swift */,
+				0392A0F723542D1100DC5FEB /* moviCollectionCell.swift */,
+			);
+			path = "Seconed_C ollection";
+			sourceTree = "<group>";
+		};
+		0392A0FA23542DF800DC5FEB /* First_Collection */ = {
+			isa = PBXGroup;
+			children = (
+				0392A0E3235423FC00DC5FEB /* ViewController.swift */,
+				0392A0F323542B3900DC5FEB /* coustomCell.swift */,
+			);
+			path = First_Collection;
+			sourceTree = "<group>";
+		};
+		E8B0A1844676A15C5F34BAA7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				851B7582F629D509081F194E /* Pods_MoviApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F3818E059F3E22E7B7E5D35E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				60B79982D1D3D5878B1BCD33 /* Pods-MoviApp.debug.xcconfig */,
+				CC90E12627A6AD2F461C49E3 /* Pods-MoviApp.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +166,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0392A0F0235423FD00DC5FEB /* Build configuration list for PBXNativeTarget "MoviApp" */;
 			buildPhases = (
+				6CC7FB151B1F71AA5806D63A /* [CP] Check Pods Manifest.lock */,
 				0392A0DA235423FC00DC5FEB /* Sources */,
 				0392A0DB235423FC00DC5FEB /* Frameworks */,
 				0392A0DC235423FC00DC5FEB /* Resources */,
+				B9888A77AFA1B4D431B95FB0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,13 +227,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6CC7FB151B1F71AA5806D63A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoviApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9888A77AFA1B4D431B95FB0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoviApp/Pods-MoviApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MoviApp/Pods-MoviApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MoviApp/Pods-MoviApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0392A0DA235423FC00DC5FEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03D2CEF723581CB7004224B5 /* recommendCell.swift in Sources */,
+				030753A42355237E00C0A30E /* photos.swift in Sources */,
+				030753A22355232400C0A30E /* JsonExtention.swift in Sources */,
 				0392A0E4235423FC00DC5FEB /* ViewController.swift in Sources */,
+				0392A0F423542B3900DC5FEB /* coustomCell.swift in Sources */,
+				030BC68F2355E1B600C85B5A /* moviDetails.swift in Sources */,
+				0392A0F623542C0A00DC5FEB /* moviCollection.swift in Sources */,
+				030753A7235523D200C0A30E /* photoApi.swift in Sources */,
 				0392A0E2235423FC00DC5FEB /* AppDelegate.swift in Sources */,
+				030BC69623570A0600C85B5A /* DetaielsApi.swift in Sources */,
+				030BC6942355EBA900C85B5A /* moviDet.swift in Sources */,
+				0392A0F823542D1100DC5FEB /* moviCollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,11 +429,13 @@
 		};
 		0392A0F1235423FD00DC5FEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60B79982D1D3D5878B1BCD33 /* Pods-MoviApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J8W3Q7RJVV;
 				INFOPLIST_FILE = MoviApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,11 +449,13 @@
 		};
 		0392A0F2235423FD00DC5FEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC90E12627A6AD2F461C49E3 /* Pods-MoviApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J8W3Q7RJVV;
 				INFOPLIST_FILE = MoviApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
