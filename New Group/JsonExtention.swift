@@ -30,14 +30,7 @@ extension JSON {
         return 0
     }
     
-//    var toString : String? {
-//        if let string = self.string {return string}
-//        if let double = self.double , let string = String?(double){
-//            return string
-//        }
-//        return "h"
-//    }
-    
+
     
     
     var toDouble : Double? {

@@ -38,7 +38,7 @@ class moviCollection: UIViewController  {
         let layout = self.collectionview.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
         layout.minimumInteritemSpacing = 5
-        layout.itemSize = CGSize(width: (self.collectionview.frame.size.width - 30 )/2, height: self.collectionview.frame.size.height/3)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 40 )/2, height: self.collectionview.frame.size.height/3)
         
         
         view.backgroundColor = .white
@@ -107,15 +107,14 @@ class moviCollection: UIViewController  {
         }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       // let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! moviCollectionCell
-       
+    
         self.selfid = self.id[indexPath.row]
         performSegue(withIdentifier: "next", sender: self)
     
     }
         override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if (segue.identifier == "next"){
-                let nextVc = segue.destination as! moviDetails
+                let nextVc = segue.destination as! headercollectionView
                 nextVc.translatedID = self.selfid
             }
         }

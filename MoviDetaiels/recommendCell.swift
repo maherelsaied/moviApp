@@ -9,7 +9,8 @@
 import UIKit
 import Kingfisher
 class recommendCell: UICollectionViewCell {
-    @IBOutlet weak var imageRec: UIImageView!
+   
+    @IBOutlet weak var imagecoll: UIImageView!
     
     var photo : photos?{
         didSet{
@@ -17,9 +18,9 @@ class recommendCell: UICollectionViewCell {
             //////////////KIngfisher/////////////
             
             // import kingfisher to install images
-            self.imageRec.kf.indicatorType = .activity
+            self.imagecoll.kf.indicatorType = .activity
             if let url = URL(string: photo.url) {
-                self.imageRec.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.flipFromTop(0.5))])
+                self.imagecoll.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.flipFromTop(0.5))])
             }
             
         }

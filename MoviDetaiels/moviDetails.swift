@@ -12,7 +12,7 @@ import Kingfisher
 class moviDetails: UIViewController {
     @IBOutlet weak var collectionRecommend: UICollectionView!
     var translatedID : Int?
-    var moviDetaiels = [moviDet]()
+    var moviDetaiels : moviDet?
     var photoArr = [photos]()
     
     @IBOutlet weak var scrool: UIScrollView!
@@ -74,27 +74,30 @@ class moviDetails: UIViewController {
         collectionRecommend.backgroundColor = .clear
         collectionRecommend.alwaysBounceVertical = true
         
-        DetaielsApi.getDetaiels(id: translatedID!) { (Error:Error?, moviDet : [moviDet]?) in
+        DetaielsApi.getDetaiels(id: translatedID!) { (Error:Error?, moviDet : moviDet?) in
             if let movi = moviDet {
-                self.moviDetaiels.append(contentsOf: movi)
+                self.moviDetaiels  = movi
                 
-                self.maintitle.text = self.moviDetaiels.first?.original_title
-                self.sub_title.text =  self.moviDetaiels.first?.tagline
-                self.overViewtxt.text = self.moviDetaiels.first?.overview
-                let rate = self.moviDetaiels.first?.vote_average
+                self.maintitle.text =   self.moviDetaiels!.original_title
+                self.sub_title.text =  self.moviDetaiels!.tagline
+                self.overViewtxt.text = self.moviDetaiels!.overview
+                let rate = self.moviDetaiels!.vote_average
                 self.timelbl.text = "180"
-                self.ratelbl.text = String(rate!)
-                self.datelbl.text = self.moviDetaiels.first?.release_date
+                self.ratelbl.text = String(rate)
+                self.datelbl.text = self.moviDetaiels!.release_date
+                
+                
+                
                 self.backImage.kf.indicatorType = .activity
-                let backimage1 = self.moviDetaiels.first?.backdrop_path
-                if let url = URL(string: backimage1!){
+                let backimage1 = self.moviDetaiels!.backdrop_path
+                if let url = URL(string: backimage1){
                     self.backImage.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.flipFromTop(0.5))])
                 }
                 
                 
                 self.posterImage.kf.indicatorType = .activity
-                let posterimag1 = self.moviDetaiels.first?.poster_path
-                if let url = URL(string: posterimag1!){
+                let posterimag1 = self.moviDetaiels!.poster_path
+                if let url = URL(string: posterimag1){
                     self.posterImage.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.flipFromTop(0.5))])
                 }
                 

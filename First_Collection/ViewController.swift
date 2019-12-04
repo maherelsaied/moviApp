@@ -60,7 +60,6 @@ class ViewController: UICollectionViewController , UICollectionViewDelegateFlowL
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
-       
         //go to main screen
         let vc = sb.instantiateViewController(withIdentifier: "socendCollection") as! moviCollection
         

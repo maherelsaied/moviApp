@@ -130,6 +130,7 @@ extension catogeryCell :  UICollectionViewDelegateFlowLayout , UICollectionViewD
         
         
         
+        
   
         
     }

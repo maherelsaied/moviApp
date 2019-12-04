@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 class DetaielsApi: NSObject {
-    class func getDetaiels (id : Int , completion:@escaping (_ Error:Error? , _ moviDet : [moviDet]?)->Void ){
+    class func getDetaiels (id : Int , completion:@escaping (_ Error:Error? , _ moviDet : moviDet?)->Void ){
         let api_key = "7c3f3cd662371816729b03e0e7fbfe6d"
         let url = "http://api.themoviedb.org/3/movie/\(id)"
         let parameters = ["api_key" : api_key]
@@ -24,16 +24,15 @@ class DetaielsApi: NSObject {
                    
                     let json = JSON(value)
 
-                    var movies = [moviDet]()
+                    
                     
                     if let datas = json.dictionary , let movi = moviDet(dict: datas) {
                         
-                        movies.append(movi)
-                        print(movies.count)
-                    
+                   
+                        completion(nil , movi)
                         
                     }
-                    completion(nil , movies)
+                    
                     
                     
                     
