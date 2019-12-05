@@ -20,7 +20,6 @@ class headerNib: UICollectionReusableView {
     @IBOutlet weak var posterImage: UIImageView!
     @IBOutlet weak var textdetailes: UITextView!
     @IBOutlet weak var textconstrain: NSLayoutConstraint!
-    
     @IBOutlet weak var recoconstrain: NSLayoutConstraint!
     
     

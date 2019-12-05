@@ -26,7 +26,7 @@ class topRatedCell: UICollectionViewCell {
             self.image?.kf.indicatorType = .activity
             if let url = URL(string: photo.url) {
                 self.image?.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.flipFromTop(0.5))])
-                print(url)
+             
             }
         }
     }

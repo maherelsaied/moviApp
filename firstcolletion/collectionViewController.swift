@@ -71,23 +71,70 @@ class collectionViewController: UIViewController {
     
    
     var firstTouch = true
-   
+    func setconstrain(){
+        if topConstrain.constant == 200 {
+            popularconstrain.constant = 0
+            comingConstain.constant = 0
+            playingconstrain.constant = 0
+        } else if popularconstrain.constant == 200 {
+            comingConstain.constant = 0
+            playingconstrain.constant = 0
+            topConstrain.constant = 0
+        }  else if playingconstrain.constant == 200 {
+            comingConstain.constant = 0
+            popularconstrain.constant = 0
+            topConstrain.constant = 0
+        }  else if topConstrain.constant == 200 {
+            comingConstain.constant = 0
+            popularconstrain.constant = 0
+            playingconstrain.constant = 0
+        }
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
+        
+    }
+    
+//    func setanathertouch(){
+//        if anathertoch {
+//            popularconstrain.constant = 200
+//            comingConstain.constant = 0
+//            playingconstrain.constant = 0
+//            topConstrain.constant = 0
+//        }else{
+//            popularconstrain.constant = 0
+//            comingConstain.constant = 0
+//            playingconstrain.constant = 0
+//            topConstrain.constant = 0
+//        }
+//    }
+//
+    var anathertoch = false
     
     @IBAction func topRatedAction(_ sender: UIButton) {
         if firstTouch {
                     firstTouch = false
                     uploadtasks(index: 0)
                     topConstrain.constant = 200
+                    setconstrain()
+            
+        }else{
+            
+            if topConstrain.constant == 200 {
+                    firstTouch = true
+                    topConstrain.constant = 0
                     popularconstrain.constant = 0
                     comingConstain.constant = 0
                     playingconstrain.constant = 0
-                    UIView.animate(withDuration: 0.3) {
-                        self.view.layoutIfNeeded()
-           }
-            
-        }else{
-              firstTouch = true
-              topConstrain.constant = 0
+            } else if popularconstrain.constant == 200 || comingConstain.constant == 200 ||  playingconstrain.constant == 200
+            {
+                 firstTouch = false
+                uploadtasks(index: 0)
+                topConstrain.constant = 200
+                popularconstrain.constant = 0
+                comingConstain.constant = 0
+                playingconstrain.constant = 0
+            }
               UIView.animate(withDuration: 0.3) {
                   self.view.layoutIfNeeded()
             }
@@ -96,18 +143,28 @@ class collectionViewController: UIViewController {
     
     @IBAction func popularAction(_ sender: UIButton) {
         if firstTouch{
-            firstTouch = true
-            popularconstrain.constant = 200
-            topConstrain.constant = 0
-            comingConstain.constant = 0
-            playingconstrain.constant = 0
+            firstTouch = false
+           
             uploadtasks(index: 1)
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
+            popularconstrain.constant = 200
+            setconstrain()
         }else{
-            firstTouch = true
-            popularconstrain.constant = 0
+           
+            if popularconstrain.constant == 200 {
+                firstTouch = true
+                topConstrain.constant = 0
+                popularconstrain.constant = 0
+                comingConstain.constant = 0
+                playingconstrain.constant = 0
+            } else if topConstrain.constant == 200 || comingConstain.constant == 200 ||  playingconstrain.constant == 200
+            {
+                firstTouch = false
+                uploadtasks(index: 1)
+                topConstrain.constant = 0
+                popularconstrain.constant = 200
+                comingConstain.constant = 0
+                playingconstrain.constant = 0
+            }
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
@@ -117,17 +174,27 @@ class collectionViewController: UIViewController {
     @IBAction func comingAction(_ sender: Any) {
         if firstTouch {
             firstTouch = false
-        uploadtasks(index: 2)
+            uploadtasks(index: 2)
             comingConstain.constant = 200
-            popularconstrain.constant = 0
-            topConstrain.constant = 0
-            playingconstrain.constant = 0
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
+            setconstrain()
         }else{
-            firstTouch = true
-            comingConstain.constant = 0
+            
+            if comingConstain.constant == 200 {
+                firstTouch = true
+                topConstrain.constant = 0
+                popularconstrain.constant = 0
+                comingConstain.constant = 0
+                playingconstrain.constant = 0
+            } else if topConstrain.constant == 200 || popularconstrain.constant == 200 ||  playingconstrain.constant == 200
+            {
+                firstTouch = false
+                uploadtasks(index: 2)
+                topConstrain.constant = 0
+                popularconstrain.constant = 0
+                comingConstain.constant = 200
+                playingconstrain.constant = 0
+            }
+           
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
@@ -138,17 +205,27 @@ class collectionViewController: UIViewController {
         
         if firstTouch{
           firstTouch = false
-           uploadtasks(index: 3)
+            
+            uploadtasks(index: 3)
             playingconstrain.constant = 200
-            popularconstrain.constant = 0
-            topConstrain.constant = 0
-            comingConstain.constant = 0
-        UIView.animate(withDuration: 0.3) {
-            self.view.layoutIfNeeded()
-        }
+            setconstrain()
         }else{
-            firstTouch = true
-            playingconstrain.constant = 0
+           
+            if playingconstrain.constant == 200 {
+                 firstTouch = true
+                topConstrain.constant = 0
+                popularconstrain.constant = 0
+                comingConstain.constant = 0
+                playingconstrain.constant = 0
+            } else if topConstrain.constant == 200 || comingConstain.constant == 200 ||  popularconstrain.constant == 200
+            {
+                 firstTouch = false
+                uploadtasks(index: 3)
+                topConstrain.constant = 0
+                popularconstrain.constant = 0
+                comingConstain.constant = 0
+                playingconstrain.constant = 200
+            }
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }
