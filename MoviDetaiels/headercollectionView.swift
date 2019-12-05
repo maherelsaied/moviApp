@@ -9,18 +9,19 @@
 import UIKit
 import Kingfisher
 class headercollectionView: UIViewController {
-
+    
     var height : CGFloat = 620.0
     var ismoreHeight : CGFloat = 0.0
     var ismorereading = false
+    var showless = false
     var translatedID : Int?
     var moviDetaiels : moviDet?
     var photoArr = [photos]()
     @IBOutlet weak var collectionview: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-          collectionview.register(UINib(nibName: "headerNib", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "head")
+        
+        collectionview.register(UINib(nibName: "headerNib", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "head")
         
         
         DetaielsApi.getDetaiels(id: translatedID!) { (Error:Error?, moviDet : moviDet?) in
@@ -47,17 +48,17 @@ class headercollectionView: UIViewController {
         
         uploadata(index: 1)
         
-       
+        
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         
-      
         
-      
+        
+        
     }
- 
-   
+    
+    
     
     func uploadata(index : Int ){
         DispatchQueue.main.async { [weak self] in
@@ -70,7 +71,7 @@ class headercollectionView: UIViewController {
             }
         }
     }
- }
+}
 
 extension headercollectionView : UICollectionViewDelegate , UICollectionViewDataSource  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -92,8 +93,8 @@ extension headercollectionView : UICollectionViewDelegate , UICollectionViewData
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "head", for: indexPath) as! headerNib
-          
-          
+            
+            
             reusableview.orignallbl.text = moviDetaiels?.original_title
             reusableview.subLBL.text = moviDetaiels?.tagline
             reusableview.textdetailes.text = moviDetaiels?.overview
@@ -107,34 +108,29 @@ extension headercollectionView : UICollectionViewDelegate , UICollectionViewData
             return reusableview
         default:  fatalError("Unexpected element kind")
         }
-    
-    
-}
+    }
 }
 
 extension headercollectionView : UICollectionViewDelegateFlowLayout , reloadHeader {
-    
-    func setconstraine(conHeight: CGFloat) {
+    func setconstraine(conHeight: CGFloat, isreadMore: Bool) {
         ismorereading = true
+        showless = isreadMore //false
         ismoreHeight = conHeight
-         self.collectionview.collectionViewLayout.invalidateLayout()
+        self.collectionview.collectionViewLayout.invalidateLayout()
         print(ismoreHeight)
-        
     }
-   
-
+    
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-   
         if ismorereading {
+            
             let size = CGSize(width: collectionView.frame.size.width, height: ismoreHeight)
-            print("new height is \(ismoreHeight)")
-       
-        return size
+            return size
+          
         }else {
-            print("///////////////")
-             return CGSize(width: collectionView.frame.size.width, height: height)
+            return CGSize(width: collectionView.frame.size.width, height: height)
         }
-     
+        
     }
     
 }
