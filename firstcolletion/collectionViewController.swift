@@ -95,20 +95,6 @@ class collectionViewController: UIViewController {
         
     }
     
-//    func setanathertouch(){
-//        if anathertoch {
-//            popularconstrain.constant = 200
-//            comingConstain.constant = 0
-//            playingconstrain.constant = 0
-//            topConstrain.constant = 0
-//        }else{
-//            popularconstrain.constant = 0
-//            comingConstain.constant = 0
-//            playingconstrain.constant = 0
-//            topConstrain.constant = 0
-//        }
-//    }
-//
     var anathertoch = false
     
     @IBAction func topRatedAction(_ sender: UIButton) {

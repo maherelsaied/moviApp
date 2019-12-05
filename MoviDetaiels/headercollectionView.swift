@@ -10,7 +10,8 @@ import UIKit
 import Kingfisher
 class headercollectionView: UIViewController {
 
-   //  var height : CGFloat = 620.0
+    var height : CGFloat = 620.0
+    var ismoreHeight : CGFloat = 0.0
     var ismorereading = false
     var translatedID : Int?
     var moviDetaiels : moviDet?
@@ -19,9 +20,8 @@ class headercollectionView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+          collectionview.register(UINib(nibName: "headerNib", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "head")
         
-        
-//        collectionview.register(UINib(nibName: "headerNib", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "head")
         
         DetaielsApi.getDetaiels(id: translatedID!) { (Error:Error?, moviDet : moviDet?) in
             if let movi = moviDet {
@@ -52,23 +52,11 @@ class headercollectionView: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         
-        collectionview.register(UINib(nibName: "headerNib", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "head")
-        let name = Notification.Name("reloade")
-        self.collectionview.collectionViewLayout.invalidateLayout()
-        NotificationCenter.default.addObserver(self, selector: #selector(reloade), name: name, object: nil)
-    }
-   
-    @objc func reloade(){
-        ismorereading = true
-        //  self.collectionview.collectionViewLayout.invalidateLayout()
-        // print("maher")
-        let layout = self.collectionview.collectionViewLayout as! UICollectionViewFlowLayout
-            print("hello")
-            layout.sectionInset = UIEdgeInsets(top: 100, left: 10, bottom: 10, right: 10)
+      
         
-        layout.itemSize = CGSize(width: (UIScreen.main.bounds.size.width - 40 )/2, height: (self.collectionview.frame.size.height+300)/5)
-
+      
     }
+ 
    
     
     func uploadata(index : Int ){
@@ -115,6 +103,7 @@ extension headercollectionView : UICollectionViewDelegate , UICollectionViewData
             if let urlPoster =  moviDetaiels?.poster_path{
                 reusableview.posterimageGet(image: urlPoster)
             }
+            reusableview.reloadeDelegate = self
             return reusableview
         default:  fatalError("Unexpected element kind")
         }
@@ -123,25 +112,30 @@ extension headercollectionView : UICollectionViewDelegate , UICollectionViewData
 }
 }
 
-extension headercollectionView : UICollectionViewDelegateFlowLayout {
-//    func setconstraine(con: CGFloat) {
-//        height = con
-//
-//        self.collectionview.collectionViewLayout.invalidateLayout()
-//    }
+extension headercollectionView : UICollectionViewDelegateFlowLayout , reloadHeader {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func setconstraine(conHeight: CGFloat) {
+        ismorereading = true
+        ismoreHeight = conHeight
+         self.collectionview.collectionViewLayout.invalidateLayout()
+        print(ismoreHeight)
         
-        return CGSize(width: collectionView.frame.size.width, height: 630)
+    }
+   
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+   
+        if ismorereading {
+            let size = CGSize(width: collectionView.frame.size.width, height: ismoreHeight)
+            print("new height is \(ismoreHeight)")
+       
+        return size
+        }else {
+            print("///////////////")
+             return CGSize(width: collectionView.frame.size.width, height: height)
+        }
      
     }
     
-    
 }
-//extension headercollectionView : reloade {
-//    func setconstraine(con: CGFloat) {
-//        self.
-//    }
-//
-//
-//}
+

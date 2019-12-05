@@ -9,9 +9,9 @@
 import UIKit
 import Kingfisher
 
-//protocol reloade {
-//    func setconstraine(con : CGFloat)
-//}
+protocol reloadHeader {
+    func setconstraine(conHeight : CGFloat)
+}
 class headerNib: UICollectionReusableView {
 
     @IBOutlet weak var orignallbl: UILabel!
@@ -24,7 +24,7 @@ class headerNib: UICollectionReusableView {
     
     
 
-   //  var reloadeDelegate : reloade!
+     var reloadeDelegate : reloadHeader!
   
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,14 +35,7 @@ class headerNib: UICollectionReusableView {
         self.posterImage.clipsToBounds = true
     }
     
-    
-    /*
- reusableview.imageBack.kf.indicatorType = .activity
- let backimage = self.moviDetaiels!.backdrop_path
- if let url = URL(string: backimage){
- reusableview.imageBack.kf.setImage(with: url, placeholder: nil, options: [.transition(ImageTransition.flipFromTop(0.5))])
- }
- */
+
     
     func getImageBack (image:String){
         self.imageBack.kf.indicatorType = .activity
@@ -63,12 +56,7 @@ class headerNib: UICollectionReusableView {
     @IBAction func readmoreaction(_ sender: UIButton) {
         adjustUITextViewHeight(arg: self.textdetailes)
         self.readoutleat.isHidden = true
-        let name = Notification.Name("reloade")
-        NotificationCenter.default.post(name: name, object: nil)
     }
-  //  collectionView(_:layout:referenceSizeForHeaderInSection:)
-
-    
     func adjustUITextViewHeight(arg : UITextView)
     {
         arg.translatesAutoresizingMaskIntoConstraints = false
@@ -76,20 +64,10 @@ class headerNib: UICollectionReusableView {
         textdetailes.isScrollEnabled = false
         textconstrain.isActive = false
         
-        print(self.frame.size.height)
-        self.frame.size.height += textdetailes.bounds.size.height-150
-        print(self.frame.size.height)
+        let height = self.frame.size.height + textdetailes.bounds.size.height-150
+        reloadeDelegate?.setconstraine(conHeight: height)
         recoconstrain.constant = 0
       
-        
-       
-        
-//         let hegit =  self.frame.size.height
-//             let mainheight = hegit + textdetailes.frame.size.height-150
-//         textconstrain?.constant = textdetailes.frame.size.height
-//
-//         reloadeDelegate?.setconstraine(con: mainheight)
-//
        
   }
 }
